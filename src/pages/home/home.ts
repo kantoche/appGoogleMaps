@@ -9,6 +9,7 @@ import {
 } from '@ionic-native/google-maps';
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+import { ApiJsPage } from '../api-js/api-js';
 
 @Component({
   selector: 'page-home',
@@ -19,6 +20,7 @@ export class HomePage {
   public mapStatus: string;
 
   constructor(public navCtrl: NavController, private googleMaps: GoogleMaps, public platform: Platform) {
+    this.navCtrl = navCtrl;
     this.platform.ready().then(() => {
       this.mapStatus = 'Platform is ready';
       this.loadMap();
@@ -68,6 +70,10 @@ export class HomePage {
            });
 
        });
-   }
+  }
+
+  showApiJsPage() {
+    this.navCtrl.push(ApiJsPage);
+  }
 
 }
